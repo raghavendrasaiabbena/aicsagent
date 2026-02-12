@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const API = '/api/admin';
+const API = (import.meta.env.VITE_API_URL || '') + '/api/admin';
+//const API = '/api/admin';
 const ZEB = '#E31837';
 
 // ── Tiny UI primitives ───────────────────────────────────────────

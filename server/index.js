@@ -27,8 +27,17 @@ app.use('/api/chat',   chatRouter);
 app.use('/api/admin',  adminRouter);
 app.use('/api/health', healthRouter);
 
-app.listen(PORT, () => {
-  console.log(`\n✅  ZEB API  →  http://localhost:${PORT}`);
-  console.log(`   Model    →  ${process.env.ANTHROPIC_MODEL}`);
-  console.log(`   Pinecone →  ${process.env.PINECONE_INDEX}\n`);
-});
+// app.listen(PORT, () => {
+//   console.log(`\n✅  ZEB API  →  http://localhost:${PORT}`);
+//   console.log(`   Model    →  ${process.env.ANTHROPIC_MODEL}`);
+//   console.log(`   Pinecone →  ${process.env.PINECONE_INDEX}\n`);
+// });
+// Local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n✅  ZEB API  →  http://localhost:${PORT}`);
+  });
+}
+
+// Vercel serverless export
+export default app;
